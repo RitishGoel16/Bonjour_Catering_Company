@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'edb.css' %}">
+    <link rel="stylesheet" href="/static/edb.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .containe {
+            max-width: 73%;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .review {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 20px);
+        }
+
+        .add-review {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 20px);
+        }
+
+        .add-review h2 {
+            text-align: center;
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        .add-reviewh2 {
+
+            margin-left: 43%;
+            padding-bottom: 40px;
+            text-decoration: underline;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #200f0f;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+
+            .review,
+            .add-review {
+                width: calc(100% - 20px);
+            }
+
+        }
+
+        @media (max-width: 530px) {
+            .add-reviewh2 {
+                margin-left: 32%;
+                padding-bottom: 40px;
+                text-decoration: underline;
+            }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            font-size: 22px;
+            /* background-color: #333; */
+            padding: 10px 140px;
+            border: 1px solid black;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: rgb(5, 5, 5);
+            text-decoration: none;
+            margin-right: 5vw;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .left-div {
+            width: 80%;
+            background-color: #fefbfb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .center-black-div {
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #060606;
+            text-align: center;
+            padding: 35px 0px 0px 0px;
+            width: 22vw;
+            min-width: 170px;
+            height: 11vh;
+            color: #fefbfb;
+        }
+        .right-div{
+            padding-top: 30px;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-div {
+                width: 100%;
+            }
+
+            .center-black-div {
+                width: 100%;
+            }
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            display: none;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: rgb(53, 49, 49);
+            margin: 5px 0;
+        }
+
+        @media screen and (max-width: 798px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .toggle-button {
+                display: block;
+            }
+
+            .nav-links a {
+                color: rgb(5, 5, 5);
+                text-decoration: none;
+                margin-right: 1vw;
+            }
+        }
+
+        @media screen and (max-width: 968px) {
+            .navbar {
+                padding: 10px 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="line"></div>
+    <div class="container">
+        <div class="left-div">
+            <div class="center-black-div">
+                <h1 data-aos="flip-up">Bonjour!</h1>
+                <h3 data-aos="flip-up">Food Company</h3>
+            </div>
+        </div>
+
+        <div class="right-div">
+            {% if user.is_authenticated %}
+            <a href="/logout"><button>Log Out</button></a>
+            {% else %}
+            <a href="/login"><button>Log In</button></a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="toggle-button">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/aboutpage">About</a>
+            <a href="/servicepage">Services</a>
+            <a href="/samplepage">Sample Menu</a>
+            <a href="/orderonline">Order Online</a>
+            <a href="/reviewpage">Client Reviews</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="tagline">
+        <h1>What Our Clients
+            <br>Say About Us
+        </h1>
+    </div>
+    <div class="black-div ">
+        <div class=" review-main">
+            <div class="first1">
+                <div class="fchild1">
+                    <div class="width40">
+                        <img src="{{j.image8.url}}">
+                    </div>
+                </div>
+                <div class="schild1">
+                    <div class="width40">
+                        <h1>Festive Spring Wedding</h1>
+                        <h5>Royal Palm Gardens, April 2035</h5>
+                        <p>“I'm a testimonial. Click to edit me and add text that says something nice about you and your
+                            services. Let your customers review you and tell their friends how great you are.
+                            Testimonials
+                            provide a sense of what it's like to work with you, or what it's like to use your products
+                            and
+                            services. This can show people that you're credible and reliable, and can build trust with
+                            potential customers.”</p>
+                    </div>
+                </div>
+                <div class="tchild1">
+                    <div class="width40">
+                        <img src="{{j.image10.url}}">
+                    </div>
+                </div>
+                <div class="fourth1">
+                    <div class="width40">
+                        <h1>4th Annual Children's Hospital Benefit</h1>
+                        <h5>Windsor Manor, June 2035</h5>
+                        <p>“I'm a testimonial. Click to edit me and add text that says something nice about you and your
+                            services. Let your customers review you and tell their friends how great you are.
+                            Testimonials
+                            provide a sense of what it's like to work with you, or what it's like to use your products
+                            and
+                            services. This can show people that you're credible and reliable, and can build trust with
+                            potential
+                            customers.”</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="second2">
+                <div class="fchild2">
+                    <div class="width40">
+                        <img src="{{j.image9.url}}" alt="">
+                    </div>
+                </div>
+                <div class="schild2">
+                    <div class="width40">
+                        <h1>Golden Anniversary Party</h1>
+                        <h5>Private Home, October 2035</h5>
+                        <p>“I'm a testimonial. Click to edit me and add text that says something nice about you and your
+                            services. Let your customers review you and tell their friends how great you are.
+                            Testimonials
+                            provide a sense of what it's like to work with you, or what it's like to use your products
+                            and
+                            services. This can show people that you're credible and reliable, and can build trust with
+                            potential
+                            customers.”
+                        </p>
+                    </div>
+                </div>
+                <div class="tchild2">
+                    <div class="width40">
+                        <img src="{{j.image11.url}}" alt="">
+                    </div>
+                </div>
+                <div class="fourth2">
+                    <div class="width40">
+                        <h1>Spring Wonderland Wedding</h1>
+                        <h5>The Chateau, December 2035</h5>
+                        <p>“I'm a testimonial. Click to edit me and add text that says something nice about you and your
+                            services. Let your customers review you and tell their friends how great you are.
+                            Testimonials
+                            provide a sense of what it's like to work with you, or what it's like to use your products
+                            and
+                            services. This can show people that you're credible and reliable, and can build trust with
+                            potential
+                            customers.”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- review -->
+        <div class="containe">
+            <h2 class="add-reviewh2 ">Reviews</h2>
+            {% for i in x %}
+            <div class="review">
+                <h5>Client Name: {{ i.name }}</h5>
+                <p>Review: {{ i.message|safe }}</p>
+            </div>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+            <div class="add-review">
+                <h2 style="text-transform: capitalize;">{{user}} - Add Your Review</h2>
+                <form action="addedrev" method="post">
+                    {% csrf_token %}
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="review">Write your review:</label>
+                    <input type="text" id="review" name="review" required>
+                    <input type="submit" value="Submit Review">
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        <div class="footer">
+            <div class="footer1">
+                <h1>Follow Us</h1>
+                <div class="link">
+                    <a style="color: white;" href="">Facebook</a><br>
+                    <a style="color: white;" href="">Instagram</a> <br>
+                    <a style="color: white;" href="">Help</a><br>
+                </div>
+            </div>
+            <div class="footer2">
+
+                <div class="copyright">
+                    <h4>
+                        © 2035 by Bonjour!</h4>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

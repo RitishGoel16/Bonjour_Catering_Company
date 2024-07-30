@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'edb.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            font-size: 22px;
+            padding: 10px 140px;
+            border: 1px solid black;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: rgb(5, 5, 5);
+            text-decoration: none;
+            margin-right: 5vw;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .left-div {
+            width: 80%;
+            background-color: #fefbfb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right-div{
+            padding-top: 30px;
+        }
+
+
+        .center-black-div {
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #060606;
+            text-align: center;
+            padding: 35px 0px 0px 0px;
+            width: 22vw;
+            min-width: 170px;
+            height: 11vh;
+            color: #fefbfb;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-div {
+                width: 100%;
+            }
+
+            .center-black-div {
+                width: 100%;
+            }
+        }
+
+        h1,
+        h2 {
+            margin: 0;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            display: none;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: rgb(53, 49, 49);
+            margin: 5px 0;
+        }
+
+        @media screen and (max-width: 798px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .toggle-button {
+                display: block;
+
+            }
+
+            .nav-links a {
+                color: rgb(5, 5, 5);
+                text-decoration: none;
+                margin-right: 1vw;
+            }
+        }
+
+        @media screen and (max-width: 968px) {
+            .navbar {
+                padding: 10px 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="line"></div>
+    <div class="container">
+        <div class="left-div">
+            <div class="center-black-div">
+                <h1 data-aos="flip-up">Bonjour!</h1>
+                <h3 data-aos="flip-up">Food Company</h3>
+            </div>
+        </div>
+        <div class="right-div">
+            {% if user.is_authenticated %}
+            <a href="/logout"><button>Log Out</button></a>
+            {% else %}
+            <a href="/login"><button>Log In</button></a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="toggle-button">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/aboutpage">About</a>
+            <a href="/servicepage">Services</a>
+            <a href="/samplepage">Sample Menu</a>
+            <a href="/orderonline">Order Online</a>
+            <a href="/reviewpage">Client Reviews</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </div>
+    <div class="bigheading " data-aos="flip-right">
+        <h1>
+            Redefining Food & Event Production
+        </h1>
+    </div>
+    <div class="image-container" data-aos="flip-left">
+
+        <img src="{{j.image.url}}" alt="Responsive Image">
+
+    </div>
+
+    <div class="div1">
+        <h1 data-aos="fade-in">What Makes Us Different</h1>
+    </div>
+
+    <div class="headings ">
+        <div class="div2" data-aos="fade-in">
+            <div class="width40">
+                <h1>Personal Touch</h1>
+                <h3>
+                    We will work with you to create a menu that fits your taste, budget and style.
+                </h3>
+            </div>
+
+        </div>
+        <div class="div3" data-aos="fade-in">
+            <div class="width40">
+                <h1>Devoted Team </h1>
+                <h3>Our team of professionals includes chefs, servers and bartenders committed to making your event
+                    spectacular.
+                </h3>
+            </div>
+        </div>
+        <div class="div4" data-aos="fade-in">
+            <div class="width40">
+                <h1>Unmatched Quality</h1>
+                <h3>
+                    Locally sourced produce and the freshest ingredients means food that is exceptional in taste.
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- ......... email .............. -->
+    <div class="lastdiv ">
+        <div class="form1" data-aos="fade-in">
+            <h1>Subscribe to Our <br> Newsletter for Updates <br> and Special Offers</h1>
+            <form action="/submitdata" method="post">
+                {% csrf_token %}
+                <label style="font-size: 20px;">Email Address *</label><br><br>
+                <input type="email" name="email" id="email" style="height: 40px;" required>
+                <input type="submit" id="button">
+            </form>
+        </div>
+
+
+        <div class="glasspic" data-aos="fade-in">
+            <div class="width40">
+                <img src="{{j.image1.url}}" alt="here is my glass">
+            </div>
+        </div>
+    </div>
+    <div class="footer" data-aos="fade-in">
+        <div class="footer1">
+            <h1>Follow Us</h1>
+            <div class="link">
+                <a href="">Facebook</a><br>
+                <a href="">Instagram</a> <br>
+                <a href="">Help</a><br>
+            </div>
+        </div>
+        <div class="footer2 ">
+
+            <div class="copyright">
+                <h4>
+                    © 2035 by Bonjour!
+                </h4>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 0,
+            duration: 2000,
+
+        });
+        const toggleButton = document.querySelector('.toggle-button');
+        const navLinks = document.querySelector('.nav-links');
+
+        toggleButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
