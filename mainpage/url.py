@@ -12,14 +12,14 @@ path('aboutpage',views.aboutpage,name='aboutpage'),
 path('reviewpage',views.reviewpage,name='reviewpage'),
 path('servicepage',views.servicepage,name='servicepage'),
 path('tcpage',views.tcpage,name='tcpage'),
-
+# path('tcpage',views.tcpage,name='tcpage'),
 path('samplepage',views.samplepage,name='samplepage'),
 path('orderonline',views.orderonline,name='orderonline'),
 path('contact',views.contact,name='contact'),
 path('submitdata',views.submitdata,name='submitdata'),
 path('addedrev',views.addedrev,name='addedrev'),
 path('submitcontact',views.submitcontact,name='submitcontact'),
-
+#l
 path('submitbutton/<int:myid>',views.submitbutton,name='submitbutton'),
 
 
